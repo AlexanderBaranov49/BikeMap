@@ -2,9 +2,10 @@
 
 Test app displaying a map of location with randomly generated bike stations.
 
-How to run:
+## How to run:
 
-iOS:
+### iOS:
+
 Need to have Cocoapods installed
 
 1. npm run update / yarn run update
@@ -12,7 +13,9 @@ Need to have Cocoapods installed
 
 2. npm run ios / yarn run ios (or Run from within Xcode)
 
-Android:
+### Android:
 
 1. npm run android-prepare / yarn run android-prepare (no need to call android-prepare if you've already called update)
 2. npm run android / yarn run android
+
+![GitHub Logo](/screenshots/bike_screen_1.png)
