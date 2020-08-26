@@ -1,0 +1,16 @@
+{
+  "status": "Status",
+  "model": "Model",
+  "battery": "Battery",
+  "book": "Book",
+  "id": "ID",
+  "available": "Available",
+  "notAvailable": "Not Available",
+  "total": "Total bikes",
+  "stations": "Stations",
+  "tapForDetails": "Tap For Details",
+  "returnBike": "Return Bike",
+  "headerTitle": {
+    "mapScreen": "Bike Stations Map"
+  }
+}

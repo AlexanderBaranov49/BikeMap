@@ -1,0 +1,8 @@
+TASK:
+Create react native app with following requirements:
+1. Build a page with map where going to be showed points with available bicycles.
+2. When you click to the point it should show status: how many available.
+3. When you click details it should show page with details to every bicycle: battery status and ability to book it.
+4. Mock service request in mobile app, but make it production ready. Response format choose your self.
+5. Code should be production ready. It is possible to use any libraries.
+6. All other decisions about feature developer can decide himself.
