@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import bikes from './bikes';
+import bikeBooking from './bikeBooking';
 
 export default combineReducers({
-  bikes,
+  bikeBooking,
 });

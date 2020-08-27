@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Alert, Text, Image } from 'react-native';
 
 import { useDispatch } from 'react-redux';
-import { bikeReturnedAction } from '../../actions/bikes';
+import { bikeReturnedAction } from '../../actions/bikeBooking';
 
 import Button from '../../components/button';
 
@@ -25,7 +25,7 @@ export default function MapScreen(props) {
   const { navigation } = props;
   const [stations, setStations] = useState([]);
   const { bookedBike, bookingId } = useSelector(
-    ({ bikes: { bookedBike, bookingId } }) => ({
+    ({ bikeBooking: { bookedBike, bookingId } }) => ({
       bookedBike,
       bookingId,
     }),

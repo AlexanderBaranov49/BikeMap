@@ -1,8 +1,8 @@
 import React, { useState, useLayoutEffect, useCallback } from 'react';
 import { View, FlatList, Text, Alert } from 'react-native';
 
-import { useDispatch } from 'react-redux';
-import { bikeBookedAction } from '../../actions/bikes';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import { bookBikeAction } from '../../actions/bikeBooking';
 
 import ActivityIndicator from '../../components/activityIndicator';
 import Button from '../../components/button';
@@ -21,8 +21,17 @@ export default function StationDetailsScreen(props) {
   const { stationId, stationName } = route.params;
   const [stationDetails, setStationDetails] = useState([]);
   const [bikesloading, setBikesLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+
+  const { bookedBike, bookingId, isLoading, error } = useSelector(
+    ({ bikeBooking: { isLoading, error, bookedBike, bookingId } }) => ({
+      bookedBike,
+      bookingId,
+      isLoading,
+      error,
+    }),
+    shallowEqual,
+  );
 
   React.useEffect(() => {
     setBikesLoading(true);
@@ -46,24 +55,7 @@ export default function StationDetailsScreen(props) {
 
   const onBookBikePressed = useCallback(
     (bike) => {
-      setLoading(true);
-      bookBike(bike.id).then(
-        (result) => {
-          setLoading(false);
-          log.debug('Get stations details:', result);
-          if (result && result.bookingId) {
-            dispatch(bikeBookedAction(bike, result.bookingId));
-            navigation.goBack();
-          } else {
-            log.debug("Can't book the bike :", bike.id);
-          }
-        },
-        (error) => {
-          setLoading(false);
-          log.debug('Book bike error:', error);
-          Alert('Error booking bike', error);
-        },
-      );
+      dispatch(bookBikeAction(bike, navigation));
     },
     [dispatch, navigation],
   );
@@ -107,7 +99,7 @@ export default function StationDetailsScreen(props) {
           )}
         />
       )}
-      {(bikesloading || loading) && (
+      {(bikesloading || isLoading) && (
         <View style={styles.loadingBg}>
           <ActivityIndicator color={Colors.white} />
         </View>
