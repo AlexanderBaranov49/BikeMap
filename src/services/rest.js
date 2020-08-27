@@ -4,8 +4,6 @@ import * as I18n from '../i18n';
 export const REQUEST_TIMEOUT = 20000;
 export const BASE_URL = 'https://example.com/api';
 
-const NO_CONTENT = 204;
-
 // TODO: token should be stored in persistent storage and not be a mock
 const getToken = () => {
   let token = 'FAKETOKEN111TEMP';
@@ -43,9 +41,6 @@ export function callApi(endpoint, method, body) {
     ])
       .then((response) => {
         log.debug('RESPONSE:', response);
-        if (response.status === NO_CONTENT) {
-          return { json: {}, response };
-        }
         return response.json().then((json) => {
           return { json, response };
         });

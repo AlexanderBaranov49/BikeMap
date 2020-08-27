@@ -1,8 +1,6 @@
-import { getRandomItem } from './array';
-import { log } from '../utils';
+import { log, arrayUtils } from '../utils';
 
 const RANDOM_STATION_POSITION_DELTA = 0.05;
-const STATIONS_COUNT = 20;
 const MAX_BIKES_POSSIBLE = 40;
 const BIKE_MODELS = [
   'TREK 820',
@@ -37,7 +35,7 @@ export const generateStationDetails = (station) => {
         status:
           i < station.bikesAvailable
             ? STATUS_AVAILABLE
-            : getRandomItem(UNAVAILABLE_STATUSES),
+            : arrayUtils.getRandomItem(UNAVAILABLE_STATUSES),
       });
     }
   }
