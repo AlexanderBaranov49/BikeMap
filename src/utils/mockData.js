@@ -69,7 +69,7 @@ export const generateMockStations = (count, location) => {
       };
     });
   }
-  return mockStations;
+  return { stations: mockStations };
 };
 
 export const getStationDetails = (stationId) => {

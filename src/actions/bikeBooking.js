@@ -1,4 +1,3 @@
-import { BIKE_BOOKED_ACTION, BIKE_RETURNED_ACTION } from '../constants/actionTypes';
 import { bookBike } from '../requests';
 import { errorMessages, actionTypes as types } from '../constants';
 import { log } from '../utils';
@@ -42,6 +41,6 @@ export const bikeBookingError = (error) => {
 
 export const bikeReturnedAction = () => {
   return {
-    type: BIKE_RETURNED_ACTION,
+    type: types.BIKE_RETURNED_ACTION,
   };
 };

@@ -3,6 +3,7 @@ import { View, StyleSheet, Alert, Text, Image } from 'react-native';
 
 import { useDispatch } from 'react-redux';
 import { bikeReturnedAction } from '../../actions/bikeBooking';
+import { getStationsAction } from '../../actions/getStations';
 
 import Button from '../../components/button';
 
@@ -23,28 +24,19 @@ import * as i18n from '../../i18n';
 
 export default function MapScreen(props) {
   const { navigation } = props;
-  const [stations, setStations] = useState([]);
-  const { bookedBike, bookingId } = useSelector(
-    ({ bikeBooking: { bookedBike, bookingId } }) => ({
+  const { stations, bookedBike, bookingId } = useSelector(
+    ({ stations: { stations }, bikeBooking: { bookedBike, bookingId } }) => ({
       bookedBike,
       bookingId,
+      stations,
     }),
     shallowEqual,
   );
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    getNearbyStations(DEFAULT_LOCATION).then(
-      (result) => {
-        log.debug('Get stations success:', result);
-        setStations(result);
-      },
-      (error) => {
-        log.debug('Get stations error:', error);
-        Alert('Error fetching stations', error);
-      },
-    );
-  }, []);
+    dispatch(getStationsAction(DEFAULT_LOCATION));
+  }, [dispatch]);
 
   const onOpenDetailsPressed = React.useCallback(
     (station) => {
