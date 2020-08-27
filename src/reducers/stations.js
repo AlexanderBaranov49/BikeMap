@@ -8,7 +8,6 @@ let initialState = {
 
 const stations = (state = initialState, action) => {
   switch (action.type) {
-    // book bike request actions
     case types.GET_STATIONS_REQUEST.START:
       return {
         ...state,

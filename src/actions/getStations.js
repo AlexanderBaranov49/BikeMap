@@ -36,9 +36,3 @@ export const getStationsError = (error) => {
     error,
   };
 };
-
-export const bikeReturnedAction = () => {
-  return {
-    type: types.BIKE_RETURNED_ACTION,
-  };
-};

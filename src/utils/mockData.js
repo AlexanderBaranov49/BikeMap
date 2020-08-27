@@ -77,7 +77,7 @@ export const getStationDetails = (stationId) => {
     for (let station of mockStations) {
       if (station.id === stationId) {
         log.debug('Found mock station:', station);
-        return generateStationDetails(station);
+        return { station: generateStationDetails(station) };
       }
     }
   }

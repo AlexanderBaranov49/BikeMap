@@ -83,21 +83,8 @@ export default function MapScreen(props) {
           <Button
             text={i18n.strings('returnBike')}
             onPress={() => {
-              // TODO: add progress indicator
-              returnBike(bookingId).then(
-                (result) => {
-                  log.debug('Get stations details:', result);
-                  if (result && result.success) {
-                    dispatch(bikeReturnedAction());
-                  } else {
-                    log.debug("Can't return the bike. Booking :", bookingId);
-                  }
-                },
-                (error) => {
-                  log.debug('Returning bike error:', error);
-                  Alert('Error returning bike', error);
-                },
-              );
+              // TODO: add request call
+              dispatch(bikeReturnedAction());
             }}
           />
         </View>
