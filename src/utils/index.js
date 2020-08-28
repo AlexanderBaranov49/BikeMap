@@ -1,5 +1,4 @@
-import Log from './log';
-import * as array from './array';
+import log from './log';
+import * as arrayUtils from './arrayUtils';
 
-export const log = Log;
-export const arrayUtils = array;
+export { arrayUtils, log };
